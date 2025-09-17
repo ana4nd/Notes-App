@@ -21,8 +21,8 @@ function App() {
       <Routes>
         <Route path='/' element = {<ProtectedRoute><Home/></ProtectedRoute>}/>
         <Route path='/signup' element = {<SignUp/>}/>
-        <Route path='/verify' element = {<ProtectedRoute><VerifyEmail/></ProtectedRoute>}/>
-        <Route path='/verify/:token' element = {<ProtectedRoute><Verify/></ProtectedRoute>}/>
+        <Route path='/verify' element = {<VerifyEmail/>}/>
+        <Route path='/verify/:token' element = {<Verify/>}/>
         <Route path='/login' element = {<Login/>}/>
         <Route path='/forgot-password' element = {<ForgotPassword/>}/>
         <Route path='/verify-otp/:email' element = {<VerifyOtp/>}/>

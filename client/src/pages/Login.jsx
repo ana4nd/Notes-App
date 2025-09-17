@@ -19,7 +19,7 @@ import { getData } from "@/context/userContext";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isloading, setIsLoading] = useState(false);
-  const {setUser} = getData();
+  const {setUser, backendUrl} = getData();
 
   const navigate = useNavigate();
 
@@ -42,8 +42,17 @@ const Login = () => {
 
     try {
       setIsLoading(true);
+      // const res = await axios.post(
+      //   `http://localhost:3000/user/login`,
+      //   formData,
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //   }
+      // );
       const res = await axios.post(
-        `http://localhost:3000/user/login`,
+        `${backendUrl}user/login`,
         formData,
         {
           headers: {

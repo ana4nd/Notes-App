@@ -17,12 +17,13 @@ const ForgotPassword = () => {
     const [email, setEmail] = useState("")
     const [isSubmitted, setIsSubmitted] = useState(false)
     const navigate = useNavigate()
+    const {backendUrl} = getData();
 
     const handleForgotPassword = async(e)=>{
         e.preventDefault()
         try {
             setIsLoading(true)
-            const res = await axios.post(`http://localhost:3000/user/forgot-password`, {
+            const res = await axios.post(`${backendUrl}user/forgot-password`, {
                 email
             });
             if(res.data.success){

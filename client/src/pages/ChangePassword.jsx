@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { getData } from "@/context/userContext";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import React, { useState } from "react";
@@ -14,7 +15,7 @@ const ChangePassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
-
+  const {backendUrl} = getData();
   const handleChangePassword = async () => {
     setError("");
     setSuccess("");
@@ -32,7 +33,7 @@ const ChangePassword = () => {
     try {
       setIsLoading(true);
       const res = await axios.post(
-        `http://localhost:3000/user/change-password/${email}`,
+        `${backendUrl}user/change-password/${email}`,
         {
           newPassword,
           confirmPassword,

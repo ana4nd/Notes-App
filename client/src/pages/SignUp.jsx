@@ -14,10 +14,12 @@ import { Eye, EyeClosed, EyeOff, Ghost, Loader2 } from "lucide-react";
 import axios from "axios";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { getData } from "@/context/userContext";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isloading, setIsLoading] = useState(false);
+  const {backendUrl} = getData();
 
   const navigate = useNavigate();
 
@@ -41,11 +43,17 @@ const SignUp = () => {
 
     try {
         setIsLoading(true)
-        const res = await axios.post(`http://localhost:3000/user/register`, formData, {
+        console.log(backendUrl);
+        const res = await axios.post(`${backendUrl}user/register`, formData, {
             headers:{
                 "Content-Type" : "application/json"
             }
         })
+        // const res = await axios.post(`http://localhost:3000/user/register`, formData, {
+        //     headers:{
+        //         "Content-Type" : "application/json"
+        //     }
+        // })
 
         if(res.data.success){
             navigate("/verify")

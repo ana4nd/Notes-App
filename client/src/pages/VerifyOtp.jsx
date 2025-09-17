@@ -2,6 +2,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input';
+import { getData } from '@/context/userContext';
 import axios from 'axios';
 import { CheckCircle, Loader2, RotateCcw } from 'lucide-react';
 import React, { useRef, useState } from 'react'
@@ -16,6 +17,7 @@ const VerifyOtp = () => {
     const [isLoading, setIsLoading] = useState(false);
     const inputRef = useRef([]);
     const navigate = useNavigate();
+    const {backendUrl} = getData();
 
     const {email} = useParams();
 
@@ -40,7 +42,7 @@ const VerifyOtp = () => {
 
         try {
             setIsLoading(true)
-            const res = await axios.post(`http://localhost:3000/user/verify-otp/${email}`,{otp: finalOtp})
+            const res = await axios.post(`${backendUrl}user/verify-otp/${email}`,{otp: finalOtp})
 
             setSuccessMessage(res.data.message)
             toast.success(res?.data?.message);
