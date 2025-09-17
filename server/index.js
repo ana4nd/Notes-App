@@ -9,7 +9,7 @@ const app = express();
 const PORT = 3000 || process.env.PORT ;
 
 app.use(cors({
-    origin:'http://localhost:5173',
+    origin:'https://notes-app-ng2t.vercel.app',
     credentials: true
 }))
 app.use(express.json());
