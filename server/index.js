@@ -21,6 +21,10 @@ app.use('/user', userRoutes);
 // Calling Database
 connectDB();
 
+app.get('/',(req,res)=>{
+    res.send('Welcome to home page');
+})
+
 app.listen(PORT,()=>{
     console.log(`Server is listening at ${PORT}`)
 })
